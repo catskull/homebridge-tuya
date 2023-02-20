@@ -209,8 +209,8 @@ class TuyaLan {
         let accessory = this.cachedAccessories.get(deviceConfig.UUID),
             isCached = true;
 
-        console.log("ACCESSORY: >>>>>>>>>>");
-        console.log(accessory);
+        // console.log("ACCESSORY: >>>>>>>>>>");
+        // console.log(accessory);
         if (accessory && accessory.category !== Accessory.getCategory(Categories)) {
             this.log.info("%s has a different type (%s vs %s)", accessory.displayName, accessory.category, Accessory.getCategory(Categories));
             this.removeAccessory(accessory);
