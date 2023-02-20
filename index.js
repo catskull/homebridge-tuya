@@ -112,6 +112,8 @@ class TuyaLan {
 
         TuyaDiscovery.start({ids: deviceIds})
             .on('discover', config => {
+                console.log("+++++++++++++++++++++LOOOK HERE++++++++++++++++++++++++++")
+                console.log(config);
                 if (!config || !config.id) return;
                 if (!devices[config.id]) return this.log.warn('Discovered a device that has not been configured yet (%s@%s).', config.id, config.ip);
 
@@ -193,14 +195,20 @@ class TuyaLan {
     }
 
     addAccessory(device) {
+        console.log("CONTEXT: >>>>>>>>>>>")
+        console.log(device.context);
         const deviceConfig = device.context;
         const type = (deviceConfig.type || '').toLowerCase();
+        console.log("TYPE: >>>>>>>>>>>")
+        console.log(type);
 
         const Accessory = CLASS_DEF[type];
 
         let accessory = this.cachedAccessories.get(deviceConfig.UUID),
             isCached = true;
 
+        console.log("ACCESSORY: >>>>>>>>>>");
+        console.log(accessory);
         if (accessory && accessory.category !== Accessory.getCategory(Categories)) {
             this.log.info("%s has a different type (%s vs %s)", accessory.displayName, accessory.category, Accessory.getCategory(Categories));
             this.removeAccessory(accessory);
