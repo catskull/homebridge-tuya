@@ -138,6 +138,8 @@ class TuyaLan {
             }));
         });
 
+        "&&&&&&&&& INITIALIZATION COMPLETED &&&&&&&&&&&"
+
         setTimeout(() => {
             deviceIds.forEach(deviceId => {
                 if (connectedDevices.includes(deviceId)) return;
